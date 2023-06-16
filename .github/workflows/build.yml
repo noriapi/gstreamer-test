@@ -9,7 +9,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install dependencies
-        if: matrix.platform == 'windows-latest'
         shell: bash
         run: |
           choco install pkgconfiglite --download-checksum=2038c49d23b5ca19e2218ca89f06df18fe6d870b4c6b54c0498548ef88771f6f --download-checksum-type=sha256
