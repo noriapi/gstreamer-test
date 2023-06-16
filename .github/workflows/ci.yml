@@ -9,12 +9,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install dependencies
+        shell: cmd
         run: |
           curl.exe -O https://gstreamer.freedesktop.org/data/pkg/windows/1.22.3/msvc/gstreamer-1.0-msvc-x86_64-1.22.3.msi
           msiexec.exe /i gstreamer-1.0-msvc-x86_64-1.22.3.msi
           curl -O https://gstreamer.freedesktop.org/data/pkg/windows/1.22.3/msvc/gstreamer-1.0-devel-msvc-x86_64-1.22.3.msi
           msiexec.exe /i gstreamer-1.0-devel-msvc-x86_64-1.22.3.msi
-          shell: cmd
 
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
