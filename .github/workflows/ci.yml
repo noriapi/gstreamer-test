@@ -4,8 +4,6 @@ on: [push]
 jobs:
   build:
     runs-on: windows-latest
-    env:
-      PKG_CONFIG_PATH: C:\gstreamer\1.0\msvc_x86_64\lib\pkgconfig
 
     steps:
       - uses: actions/checkout@v3
@@ -22,11 +20,10 @@ jobs:
       - name: Rust cache
         uses: swatinem/rust-cache@v2
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Test
         run: cargo test
+        env:
+          PKG_CONFIG_PATH: C:\gstreamer\1.0\msvc_x86_64\lib\pkgconfig
 
       - name: Build
         run: cargo build
