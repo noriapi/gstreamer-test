@@ -15,6 +15,7 @@ jobs:
           choco install pkgconfiglite --download-checksum=2038c49d23b5ca19e2218ca89f06df18fe6d870b4c6b54c0498548ef88771f6f --download-checksum-type=sha256
           choco install gstreamer
           choco install gstreamer-devel
+          echo "C:\gstreamer\1.0\msvc_x86_64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
