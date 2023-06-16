@@ -1,0 +1,27 @@
+name: Build
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        if: matrix.platform == 'windows-latest'
+        shell: bash
+        run: |
+          choco install pkgconfiglite --download-checksum=2038c49d23b5ca19e2218ca89f06df18fe6d870b4c6b54c0498548ef88771f6f --download-checksum-type=sha256
+          choco install gstreamer
+          choco install gstreamer-devel
+          echo "PKG_CONFIG_PATH=C:\gstreamer\1.0\msvc_x86_64\lib\pkgconfig" >> $GITHUB_ENV
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+
+      - name: Build
+        run: cargo build
