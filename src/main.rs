@@ -1,7 +1,7 @@
 use gstreamer as gst;
 use gstreamer::prelude::*;
 
-fn main() {
+fn tutorial_main() {
     // Initialize GStreamer
     gst::init().unwrap();
 
@@ -39,4 +39,18 @@ fn main() {
     pipeline
         .set_state(gst::State::Null)
         .expect("Unable to set the pipeline to the `Null` state");
+}
+
+fn main() {
+    tutorial_main();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tutorial() {
+        tutorial_main();
+    }
 }
