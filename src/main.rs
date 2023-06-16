@@ -1,4 +1,5 @@
 use gstreamer as gst;
+use gstreamer::prelude::*;
 
 fn main() {
     // Initialize GStreamer
